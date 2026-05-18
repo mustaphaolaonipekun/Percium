@@ -1,0 +1,67 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; }
+body {
+  font-family: 'Manrope', sans-serif;
+  background: #051a14;
+  color: #e8f5e9;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+button { font-family: 'Manrope', sans-serif; cursor: pointer; }
+input, select, textarea { font-family: 'Manrope', sans-serif; }
+a { text-decoration: none; color: inherit; }
+::selection { background: rgba(0, 230, 118, 0.2); }
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(0,230,118,0.18); border-radius: 4px; }
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; }
+input[type=number] { -moz-appearance: textfield; }
+input[type=range] {
+  -webkit-appearance: none; appearance: none;
+  height: 3px; background: rgba(255,255,255,0.1);
+  border-radius: 3px; outline: none; cursor: pointer; width: 100%;
+}
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none; width: 14px; height: 14px;
+  border-radius: 50%; background: #00c853; cursor: pointer;
+}
+input[type=range]::-moz-range-thumb {
+  width: 14px; height: 14px; border-radius: 50%;
+  background: #00c853; cursor: pointer; border: none;
+}
+
+/* ── Wallet Adapter UI overrides ── */
+.wallet-adapter-modal-wrapper {
+  font-family: 'Manrope', sans-serif !important;
+  background: #161b22 !important;
+}
+.wallet-adapter-modal-title {
+  font-family: 'Manrope', sans-serif !important;
+  font-weight: 800 !important;
+  color: #e8f5e9 !important;
+}
+.wallet-adapter-modal-list li {
+  font-family: 'Manrope', sans-serif !important;
+}
+.wallet-adapter-button {
+  font-family: 'Manrope', sans-serif !important;
+  font-weight: 700 !important;
+  border-radius: 8px !important;
+  background: #0f9b5e !important;
+}
+.wallet-adapter-button:hover {
+  background: #00c853 !important;
+}
+.wallet-adapter-modal-list-more {
+  color: #1de9b6 !important;
+}
+/* prevent modal from blocking entire page when closed */
+.wallet-adapter-modal {
+  z-index: 1000 !important;
+}
+.wallet-adapter-modal-overlay {
+  background: rgba(0,0,0,0.72) !important;
+  backdrop-filter: blur(6px) !important;
+}
