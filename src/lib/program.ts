@@ -125,8 +125,7 @@ export async function ensureUserAccount(
   const [pda] = getUserAccountPDA(owner)
   const info = await connection.getAccountInfo(pda, 'confirmed')
   if (!info) {
-    const sig = await program.methods
-      .initializeUser()
+    const sig = await (program.methods.initializeUser() as any)
       .accounts({ userAccount: pda, owner, systemProgram: SystemProgram.programId })
       .rpc()
     await connection.confirmTransaction(sig, 'confirmed')
@@ -322,8 +321,9 @@ export async function depositUSDC(
   const userTokenAccount = await getAssociatedTokenAddress(USDC_MINT, owner)
   const amountLamports = usdcToBN(amountUsdc)
 
-  const sig = await program.methods
-    .deposit(amountLamports)
+  // Reduce TypeScript generic inference depth by casting the method to `any`
+  const depositMethod: any = program.methods.deposit(amountLamports)
+  const sig = await depositMethod
     .accounts({
       userAccount: userPda,
       userTokenAccount,
@@ -383,8 +383,10 @@ export async function depositSolAsUsdc(
   }
 
   const amountLamports = usdcToBN(depositAmt)
-  const depositSig = await program.methods
-    .deposit(amountLamports)
+
+  // Reduce TypeScript generic inference depth by casting the method to `any`
+  const depositMethod: any = program.methods.deposit(amountLamports)
+  const depositSig = await depositMethod
     .accounts({
       userAccount: userPda,
       userTokenAccount,
@@ -420,8 +422,9 @@ export async function withdrawUSDC(
   const userTokenAccount = await getAssociatedTokenAddress(USDC_MINT, owner)
   const amountLamports = usdcToBN(amountUsdc)
 
-  const sig = await program.methods
-    .withdraw(amountLamports)
+  // Reduce TypeScript generic inference depth by casting the method to `any`
+  const withdrawMethod: any = program.methods.withdraw(amountLamports)
+  const sig = await withdrawMethod
     .accounts({
       userAccount: userPda,
       userTokenAccount,
@@ -531,8 +534,9 @@ export async function openPosition(
   const entryPrice = usdcToBN(entryPriceUsd)
   const size = usdcToBN(collateralUsdc * leverage)
 
-  const txSig = await program.methods
-    .openPosition(market, side, leverage, collateral, entryPrice, size)
+  // Reduce TypeScript generic inference depth by casting the method to `any`
+  const openMethod: any = (program.methods as any).openPosition(market, side, leverage, collateral, entryPrice, size)
+  const txSig = await openMethod
     .accounts({ userAccount: userPda, position: positionPda, owner, systemProgram: SystemProgram.programId })
     .rpc()
 
@@ -548,10 +552,14 @@ export async function closePosition(
 ): Promise<string> {
   const [userPda] = getUserAccountPDA(owner)
   const exitPrice = usdcToBN(exitPriceUsd)
-  return program.methods
-    .closePosition(exitPrice)
+
+  // Reduce TypeScript generic inference depth by casting the method to `any`
+  const closeMethod: any = (program.methods as any).closePosition(exitPrice)
+  const sig = await closeMethod
     .accounts({ userAccount: userPda, position: positionPda, owner })
     .rpc()
+
+  return sig
 }
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────

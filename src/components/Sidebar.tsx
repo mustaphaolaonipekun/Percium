@@ -17,7 +17,7 @@ import Logo from "./Logo";
 
 const NAV = [
   { label: "Trade", icon: LineChart, path: "/trade" },
-  { label: "Get Tokens", icon: ArrowLeftRight, path: "/faucet" },
+  { label: "Deposit", icon: ArrowLeftRight, path: "/faucet" },
   { label: "Positions", icon: Coins, path: "/positions" },
   { label: "Portfolio", icon: LayoutDashboard, path: "/portfolio" },
   { label: "PnL", icon: null, path: "/pnl", dot: true },

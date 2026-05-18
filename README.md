@@ -46,7 +46,7 @@ npm run build    # production build
 ## How It Works
 
 1. **Connect Wallet** — Click "Connect Wallet", pick any detected wallet (Phantom, Solflare, Backpack…)
-2. **Get Tokens** — Go to `/faucet` to get devnet USDC and SOL airdropped
+2. **Deposit** — Go to `/faucet` to get devnet USDC and SOL airdropped
 3. **Deposit** — Move USDC from wallet into Percium protocol balance
 4. **Open Position** — Calls `open_position` on-chain; Arcium MXE encrypts collateral + entry price
 5. **Arcium MXE** — `encrypt_position`, `compute_liquidation`, `compute_pnl` run in encrypted enclaves
