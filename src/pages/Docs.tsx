@@ -37,7 +37,7 @@ export default function Docs() {
 
         {/* Arcium callout */}
         <div style={{ background: 'linear-gradient(135deg,rgba(124,77,255,0.08),rgba(0,200,83,0.04))', border: '1px solid rgba(124,77,255,0.22)', borderRadius: 16, padding: '26px 30px', marginBottom: 52 }}>
-          <h3 style={{ fontFamily: 'Manrope', fontWeight: 800, fontSize: 18, color: '#b39ddb', marginBottom: 12 }}>🔒 Powered by Arcium MXE</h3>
+          <h3 style={{ fontFamily: 'Manrope', fontWeight: 800, fontSize: 18, color: '#b39ddb', marginBottom: 12 }}>Powered by Arcium MXE</h3>
           <p style={{ fontSize: 14, color: C.textSec, lineHeight: 1.78, margin: 0 }}>
             Percium integrates Arcium Multiparty Execution Environment (MXE) to enable fully
             confidential computation of trades. All position data, order matching, and liquidation
